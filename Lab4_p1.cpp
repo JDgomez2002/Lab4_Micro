@@ -37,7 +37,6 @@ double *utilities_july; // [8] <---- profits_july - (sold_units_july * unit_cost
 double total_profit_july = 0; // <---- total of profits_july
 double variable_costs_july = 45640.0;
 double utility_july = 0; // <---- (total of utilities_july) - variable_costs_july
-bool july_finished = false;
 int *july_pthreads_finished_state;
 
 //August: Sold Units, profit per unit, utilities per unit, total profit of the month, variable costs, 
@@ -47,7 +46,6 @@ double *utilities_august; // [8] <---- profits_august - (sold_units_august * uni
 double total_profit_august = 0; // <---- total of profits_august
 double variable_costs_august = 40590.0;
 double utility_august = 0; // <---- (total of utilities_august) - variable_costs_august
-bool august_finished = false;
 int *august_pthreads_finished_state;
 
 //Mutex for Pthread printing
@@ -73,7 +71,7 @@ void *evaluate_products(void *pthread_number){
         total_profit_july += profits_july[tID];
 
         //Evaluate if the pthreads finished of calculate utilities_july array
-        july_finished = true;
+        bool july_finished = true;
         int counter = 0;
         while((july_finished)&&(counter<8)){
             if(july_pthreads_finished_state[counter]==0){
@@ -112,7 +110,7 @@ void *evaluate_products(void *pthread_number){
         total_profit_august += profits_august[tID];
 
         //Evaluate if the pthreads finished of calculate utilities_august array
-        august_finished = true;
+        bool august_finished = true;
         int counter = 0;
         while((august_finished)&&(counter<8)){
             if(august_pthreads_finished_state[counter]==0){
@@ -122,7 +120,7 @@ void *evaluate_products(void *pthread_number){
         }
 
         //if them finished, calculate utility of the month
-        if(july_finished){
+        if(august_finished){
             //Eureka!
             double total_utility = 0;
             for(int k = 0; k<8 ;k++){
@@ -239,9 +237,10 @@ void show_july(){
         cout << "     " << products[j] << ": Q " << profits_july[j] << endl;
         cout << "           " << "Utilidad: Q " << utilities_july[j] << "\n" << endl;
     }
-    cout << "Total de ventas: Q " << total_profit_july << endl;
-    cout << "Costos Variables: Q " << variable_costs_july << endl;
-    cout << "Utilidad del mes: Q " << utility_july << endl;
+    cout << "\nTotales de Julio" << endl;
+    cout << "   Total de ventas: Q " << total_profit_july << endl;
+    cout << "   Costos Variables: Q " << variable_costs_july << endl;
+    cout << "   Utilidad del mes: Q " << utility_july << endl;
     cout << "-------------------------------" << endl;
 }
 
@@ -252,8 +251,9 @@ void show_august(){
         cout << "     " << products[j] << ": Q " << profits_august[j] << endl;
         cout << "           " << "Utilidad: Q " << utilities_august[j] << "\n" << endl;
     }
-    cout << "\nTotal de ventas: Q " << total_profit_august << endl;
-    cout << "Costos Variables: Q " << variable_costs_august << endl;
-    cout << "Utilidad del mes: Q " << utility_august << endl;
+    cout << "\nTotales de Agosto" << endl;
+    cout << "   Total de ventas: Q " << total_profit_august << endl;
+    cout << "   Costos Variables: Q " << variable_costs_august << endl;
+    cout << "   Utilidad del mes: Q " << utility_august << endl;
     cout << "---------------------------------" << endl;
 }
