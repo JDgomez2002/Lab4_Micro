@@ -111,7 +111,7 @@ void *evaluate_products(void *pthread_number){
         //Total profit of the month
         total_profit_august += profits_august[tID];
 
-        //Evaluate if the pthreads finished of calculate utilities_july array
+        //Evaluate if the pthreads finished of calculate utilities_august array
         august_finished = true;
         int counter = 0;
         while((august_finished)&&(counter<8)){
