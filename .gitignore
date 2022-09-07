@@ -1,5 +1,6 @@
 *.java
 *.exe
+*exe
 *pruebas.cpp
 *Lab4ejercicio1.cpp
 *pthread_hello1.cpp
