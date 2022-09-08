@@ -6,13 +6,7 @@
 //Jose Daniel Gomez Cabrera 21429
 //Actividad: Laboratorio 4 Parte 2
 
-// #include <pthread.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <errno.h>
-// #include <unistd.h>
 #include <iostream>
-// #include <string.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
