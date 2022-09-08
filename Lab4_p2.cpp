@@ -63,7 +63,7 @@ void* packager(void* arg){
         if((packaging_queue+coffee_celar)<total_coffee_amount){
             while(packaging_queue < 5){
                 printf("\nSin cantidad minima para empacar (5)...\n\n");
-                pthread_cond_wait(&conditional_variable, & coffee_mutex);
+                pthread_cond_wait(&conditional_variable, &coffee_mutex);
             }
         }
         packaging_queue--;
