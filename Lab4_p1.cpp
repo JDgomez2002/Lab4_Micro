@@ -97,6 +97,7 @@ void *evaluate_products(void *pthread_number){
         printing = true;     
     }
     else{
+        //-8 to the index so it would be 0 to 7
         tID = tID-8;
 
         //Profit per unit
