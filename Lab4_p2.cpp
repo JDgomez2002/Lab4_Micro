@@ -34,7 +34,7 @@ int coffee_celar = 0;
 
 //coffee order amount
 int total_coffee_amount;
-int *coffee_order_amounts;
+int *coffee_order_amounts; //separate amounts for both threads
 
 //Mutex
 pthread_mutex_t coffee_mutex;
@@ -51,10 +51,8 @@ pthread_cond_t conditional_variable;
 //Coffee machines
 void* toaster(void* arg){
     long tID = (long)arg;
-    // cout << tID << endl;
     for(int i = 0; i<(coffee_order_amounts[tID]) ;i++){
         pthread_mutex_lock(&coffee_mutex);
-        // sleep(1);
         packaging_queue++;
         cout << "Tostadora " << (tID+1) << ": 1 lb producida" << endl;
         pthread_mutex_unlock(&coffee_mutex);
@@ -74,10 +72,6 @@ void* packager(void* arg){
                 pthread_cond_wait(&conditional_variable, & coffee_mutex);
             }
         }
-        // while(packaging_queue < 5){
-        //     printf("\nSin cantidad minima para empacar (5) ...\n\n");
-        //     pthread_cond_wait(&conditional_variable, & coffee_mutex);
-        // }
         packaging_queue--;
         printf("\nLa Empacadora empaco 1lb de cafe.\n   Cantidad en silo: %d\n", packaging_queue);
         coffee_celar++;
