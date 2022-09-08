@@ -65,7 +65,7 @@ void *evaluate_products(void *pthread_number){
 
         //Utility per unit
         utilities_july[tID] = profits_july[tID] - (sold_units_july[tID] * unit_costs[tID]);
-        july_pthreads_finished_state[tID] = 1; //Utility finished!!! it is for line 72 and 82
+        july_pthreads_finished_state[tID] = 1; //Utility finished!!! it is for line 73 and 83
 
         //Total profit of the month
         total_profit_july += profits_july[tID];
@@ -105,7 +105,7 @@ void *evaluate_products(void *pthread_number){
         
         //Utility per unit
         utilities_august[tID] = profits_august[tID] - (sold_units_august[tID] * unit_costs[tID]);
-        august_pthreads_finished_state[tID] = 1; //Utility finished!!! it is for line 105 and 115
+        august_pthreads_finished_state[tID] = 1; //Utility finished!!! it is for line 113 and 123
 
         //Total profit of the month
         total_profit_august += profits_august[tID];
